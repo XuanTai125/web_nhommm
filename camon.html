@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CẢM ƠN QUÝ KHÁCH</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"  href="camon.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pattaya&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body, 
+html{
+    margin:-20px;
+    padding:0px;
+    font-family: "Pattaya", sans-serif;
+
+}
+.banner-section{
+    background-image: url(/images/1c282b3553980d3b191825c039cd9c6f.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+}
+.top-gradient:after{
+    content:"";
+    display:block;
+    position: absolute;
+    top: 0; left: 0;
+    bottom: 0; right:0;
+
+}
+.bottom-gradient:after{
+    content:"";
+    display:block;
+    background-image: linear-gradient(180deg,
+    rgba(24,133,69,0) 48.77%,
+    #ffffff 100%);
+    position: absolute;
+    top: 0; left: 0;
+    bottom: 0; right:0;
+
+}
+.header-intro{
+    max-width: 800px;
+    margin:auto;
+    top:30%;
+    position: relative;
+    z-index:  1;
+    text-align: center;
+    color:#d40b0b;
+    font-weight: lighter;
+
+}
+.name{
+  color:black;
+  font-size: 60px;
+  top:10px;
+}
+.header-center{
+    font-size: 40px;
+    opacity:3;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px black;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.btn-scroll{
+    text-decoration: none;
+    background: rgba(138, 137, 137, 0.5);
+    border:1px solid black;
+    padding:0.5rem 1.625rem;
+    position: relative;
+    height:2.5rem;
+    font-size: 0.975rem;
+    color:#fff;
+    margin:10px;
+    top:20px;
+}
+.btn-scroll:hover{
+    background:red;
+
+}
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+    </style>
+    <section class="banner-section top-gradient">
+        <div class="header-intro">
+            <h1 class="header-center"><span class="name">NIHAO RESTAURANT </span><br>CẢM ƠN QUÝ KHÁCH</h1>
+            <a href="Index.html" class="btn-scroll" type="button">TRỞ VỀ</a>
+        </div>
+
+    </section>
+</body>
+</html>

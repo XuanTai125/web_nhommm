@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form</title>
+  <link rel="stylesheet" href="datmon.css">
+</head>
+<body>
+  <form id="order-form" method="post" action="/order">
+    <h1>Đặt món</h1>
+    <div class="form-group">
+      <label for="name">Nhập tên:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Số điện thoại:</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label for="instructions">Ghi chú:</label>
+      <textarea id="instructions" name="instructions"></textarea>
+    </div>
+    <h2>Menu</h2>
+    <div class="menu-item">
+      <input type="checkbox" id="item1" name="items[]" value="750000">
+      <label for="item1">Vịt quay Bắc Kinh - 750.000 VND</label>
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="item2" name="items[]" value="77000">
+      <label for="item2">CHÂN GÀ TÀU XÌ - 77.000 VND</label>
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="item3" name="items[]" value="75000">
+      <label for="item3">Mì gà - 75.000 VND</label>
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="item4" name="items[]" value="550000">
+      <label for="item4">Lẩu tứ xuyên - 550.000 VND</label>
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="item5" name="items[]" value="499000">
+      <label for="item2">Canh bào ngư tứ quý - 499.000 VND</label>
+    </div>
+    <div class="form-group">
+      <label for="drink">Drink:</label>
+      <select id="drink" name="drink" required>
+        <option value="">Select a drink</option>
+        <option value="20000">Trà Đào - 20.000 VND</option>
+        <option value="35000">Trà sữa Hồng Kong - 35.000 VND</option>
+        <option value="20000">Nước ngọt đồng giá - 20.000 VND</option>
+      </select>
+    </div>
+    <button type="submit">Submit order</button>
+  </form>
+  <script>
+    let totalBill = 0;
+
+const menuItems = document.querySelectorAll('.menu-item input[type="radio"]');
+menuItems.forEach(item => {
+  item.addEventListener('change', () => {
+    const itemPrice = parseFloat(item.getAttribute('data-price'));
+    const quantity = parseInt(document.querySelector(`input[name="${item.name}"][type="number"]`).value);
+    const subtotal = itemPrice * quantity;
+    totalBill += subtotal;
+    updateTotalBill();
+  });
+});
+
+const quantityInputs = document.querySelectorAll('.menu-item input[type="number"]');
+quantityInputs.forEach(input => {
+  input.addEventListener('change', () => {
+    const itemPrice = parseFloat(input.getAttribute('data-price'));
+    const quantity = parseInt(input.value);
+    const subtotal = itemPrice * quantity;
+    totalBill += subtotal;
+    updateTotalBill();
+  });
+});
+
+function updateTotalBill() {
+  const totalBillElement = document.getElementById('total-bill');
+  totalBillElement.textContent = `Total: $${totalBill.toFixed(2)}`;
+}
+
+const submitButton = document.getElementById('submit-button');
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  const confirmation = confirm(`Thank you for your order! Your total bill is $${totalBill.toFixed(2)}. Press OK to confirm.`);
+  if (confirmation) {
+    // Reset the total bill and form fields
+    totalBill = 0;
+    menuItems.forEach(item => {
+      item.checked = false;
+      const quantityInput = document.querySelector(`input[name="${item.name}"][type="number"]`);
+      quantityInput.value = 0;
+    });
+    updateTotalBill();
+  }
+});
+  </script>
+    
+</body>
+</html>
